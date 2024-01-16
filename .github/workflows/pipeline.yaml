@@ -28,10 +28,10 @@ jobs:
         with:
           python-version: '3.9'
       # - run: pip install -r requirements.txt
-      # - run : yes | sam delete --stack-name dev-stack --region us-east-1 --no-prompts
-      - run: pip install aws-sam-cli
-      - run: sam build
-      - run: sam deploy --no-confirm-changeset --stack-name dev-stack --region us-east-1  # Specify dev stack and region
+      - run : yes | sam delete --stack-name dev-stack --region us-east-1 --no-prompts
+      # - run: pip install aws-sam-cli
+      # - run: sam build
+      # - run: sam deploy --no-confirm-changeset --stack-name dev-stack --region us-east-1  # Specify dev stack and region
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.BETA_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.BETA_ACCESS_KEY }}
@@ -42,8 +42,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      # - run : yes | sam delete --stack-name prod-stack --region us-east-1 --no-prompts
-      - run: sam deploy --no-confirm-changeset --stack-name prod-stack --region us-east-1  # Specify prod stack and region
+      - run : yes | sam delete --stack-name prod-stack --region us-east-1 --no-prompts
+      # - run: sam deploy --no-confirm-changeset --stack-name prod-stack --region us-east-1  # Specify prod stack and region
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.BETA_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.BETA_ACCESS_KEY }}
